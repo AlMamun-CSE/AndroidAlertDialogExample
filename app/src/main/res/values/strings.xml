@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AndroidAlertDialogExample</string>
+    <string name="firstalert">FirstAlert</string>
+    <string name="secondalert">SecondAlert</string>
+    <string name="thirdalert">ThirdAlert</string>
+    <string name="samplelistviewalert">SampleListView</string>
+    <string name="radioalert">RadioButton</string>
+    <string name="checkalert">CheckBox</string>
+</resources>
