@@ -11,12 +11,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
 
 
     private Button firstAlert,secondAlert,thirdAlert,sampleListView,checkBox,radioButton;
-
+    private ArrayList<Integer>selectedList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,13 +167,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Make Your Selection");
         builder.setCancelable(false);
-       
+        builder.setSingleChoiceItems(R.array.chooise,0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                showToast("You Chooses: "+which);
+                dialog.dismiss();
+            }
+        });
         builder.show();
     }
 
 
     public void alertSix(){
+        //initialize array list
+        selectedList = new ArrayList<>();
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Make Your Selection");
+        builder.setCancelable(false);
+        builder.setMultiChoiceItems(R.array.chooise, null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                if (isChecked){
+                    selectedList.add(which);
+                }else if (selectedList.contains(which)){
+                    selectedList.remove(Integer.valueOf(which));
+                }
+
+            }
+        });
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String selectedIndex = " ";
+                for(Integer i : selectedList){
+                    selectedIndex += i +" ";
+                }
+                showToast("Selected Item: "+selectedIndex);
+            }
+        });
+        builder.show();
     }
 
 

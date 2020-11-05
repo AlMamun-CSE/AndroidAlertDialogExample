@@ -6,4 +6,12 @@
     <string name="samplelistviewalert">SampleListView</string>
     <string name="radioalert">RadioButton</string>
     <string name="checkalert">CheckBox</string>
+    <string-array name="chooise">
+        <item>Pepsi</item>
+        <item>Seven Up</item>
+        <item>Spirit Cane</item>
+        <item>Coke</item>
+        <item>Pran Up</item>
+        <item>Orange</item>
+    </string-array>
 </resources>
